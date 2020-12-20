@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First AnyChart</title>
+    <script src="anychart-base.min.js"></script>
+    <style>
+        div {
+            font-family: monospace; 
+            font-size: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container" style="width:700px; height:500px;">
+    </div>
+
+    <script>
+        anychart.onDocumentLoad(function () {
+            // CREATE AN INSTANCE OF A PIE CHART
+            var chart = anychart.pie3d();
+
+            // SET THE DATA 
+            chart.data([
+                ['Chocolate', 5],
+                ['Rhubarb Compote', 2],
+                ['Crepe Suzette', 2],
+                ['American Blueberry', 2],
+                ['Buttermilk', 1]
+            ]);
+
+            // SET THE CHART TITLE
+            chart.title('Top 5 Pancake Fillings');
+
+            // SET THE CONTAINER ELEMENT
+            chart.container('container');
+
+            // INITIATE CHART DISPLAY
+            chart.draw();
+        });
+    </script>
+</body>
+</html>
