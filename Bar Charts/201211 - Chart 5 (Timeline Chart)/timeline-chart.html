@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timeline Chart</title>
+    <style>
+        *{
+            font-family: lato;
+        }
+
+        .column{
+            float: left;
+            width: 50%;
+        }
+
+        /*Clear floats after the columns*/
+        .row:after{
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        @media screen and (max-width: 600px) {
+            .column { width: 100%;}
+        }
+
+        a {
+            color: #2d7bb2;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            color: #333;
+        }
+
+        /*Timeline Charts*/
+
+        .timeline {
+            font-size: 0.75em;
+            height: 10em;
+            width: 53em;
+        }
+
+        .timeline li { 
+            position: relative;
+            float: left;
+            width: 1.5em; 
+            margin: 0 0.1em;
+            height: 8em; 
+            list-style-type: none;
+        }
+
+        .timeline li a { 
+          display: block;
+          height: 100%;  
+        }
+    
+    .timeline li .label {
+        display: block; 
+        position: absolute; 
+        bottom: -2em; 
+        left: 0; 
+        background: #fff; 
+        width: 100%; 
+        height: 2em; 
+        line-height: 2em; 
+        text-align: center;
+    }
+
+    .timeline li a .count { 
+        display: block; 
+        position: absolute; 
+        bottom: 0; 
+        left: 0; 
+        height: 0; 
+        width: 100%; 
+        background: #AAA; 
+        text-indent: -9999px; 
+        overflow: hidden; 
+    }
+    
+    .timeline li:hover { 
+      background: #EFEFEF; 
+    }
+    
+    .timeline li a:hover .count { 
+      background: #2D7BB2; 
+    }
+     
+    </style>
+</head>
+<body>
+    <h2>Timeline Charts</h2>
+    <div class="row">
+
+        <!-- START COLUMN ONE -->
+        <div class="column">
+            <p>
+                Once we've established the basic recipe of good old semantic navigation  with a sprinkling of data and some CSS to turn the
+                data into a chart, there are lots of variations you can apply to different types of data. One easy trick is to turn the chart on its side to make a timeline.
+            </p>
+        
+            <p>
+                We'll start out with markup that's very similar to the first chart. In this case, it's a list of days, with a value for each day. Since we have limited space in the horizontal format to show labels for each bar, we're just going to show the day of the month in the label and use a header above the list to indicate the month. <br>
+
+                Since this is meant to be navigation, and the chart will convey the relative values (which is what we're after), it's okay that we're not showing all the information here. As an extra convenience, we'll add a title to the links with the full date and the count for the day, so that detail wll show up in a tooltip for each bar.
+            </p>
+
+            <p>
+                Repeat as necessary. In this example, we've created a 10-day chart with a bar for each day, but you could make the chart any length and size you need. If you're making a chart with fewer bars, you can make them larger and make room for longer labels underneath.
+            </p>
+
+            <p>
+                In order to make sure the labels fit in the space underneath the bars, we're gong to size the entire chart using <span style="font-family:monospace">ems</span> so it will flex up and down with the text size. To make things simpler, we'll go ahead and set the text size we want to use for the labels on the main <span style="font-family: monospace;">.timeline</span> element, so I can size everything relative to that. We'll set the <span style="font-family: monospace;">height</span> of the whole chart to 10 <span style="font-family: monospace;">ems</span>, which leaves 8 <span style="font-family: monospace;">ems</span> for the bars and 2 <span style="font-family: monospace">ems</span> for the labels with a little padding.
+            </p>
+
+            <p style="font-family:monospace">
+                .timeline { <br>
+                    &ensp;font-size: 0.75em;  <br>
+                    &ensp;height: 10em;   <br>
+                } <br> <br>
+
+                .timeline li { <br>
+                    &ensp;height: 8em; <br>
+                }
+            </p>
+
+            <p>
+                As before, we'll set the list items to use relative positioning, since we'll be using absolute positioning to pin the bars to the bottom of each one. (If we didn't use absolute positioning relative to each list item, the bars would just dangle from the top, which isn't quite the look we're going for.)
+            </p>
+
+            <p>
+                We'll float the list items to the left so the bars will line up next to each other horizontally. We'll set the width of each bar to 1.5em and the height to 8em to give us enough room for the two-digit labels below, and put just a little padding on either side to separate the bars from each other. We're using <span style="font-family: monospace">ems</span> for all these dimensions <strong>so the bars and the labels will scale up together when the text size changes.</strong>
+            </p>
+
+            <p style="font-family:monospace">
+                .timeline li { <br>
+                    &ensp;height: 8em; <br>
+                    &ensp;position: relative; <br>
+                    &ensp;float: left; <br>
+                    &ensp;width: 1.5em; <br>
+                    &ensp;margin: 0 0.1em; <br>
+                }
+            </p>
+
+            <p>
+                Since we want the entire area of the bar and label to be clickable, we'll set the links to <span style="font-family: monospace;"> display: block </span> and <span style="font-family: monospace">height: 100 </span> so they fill the available space we've created for the list items.
+            </p>
+
+            <p style="font-family: monospace;">
+                .timeline li a { <br>
+                &ensp;display:block; <br>
+                &ensp;height: 100%; <br>
+                }
+            </p>
+
+            <p>
+                We want the labels to display below the bars, but since we want both the bars and the labels to be clickable, we've placed them both inside the <span style="font-family: monospace;">&lt;a&gt;</span> tag. In order to move the labels out of the way, we'll use absolute positioning with a negative <span style="font-family: monospace;">bottom</span> value.
+            </p>
+
+            <p>
+                Since the bars have a height of 8em and the chart is 10em, we'll move the labels down from the bottom of the bars by -2em. We'll give them a <span style="font-family: monospace;">line-height</span> of 2em as well, so no matter what the text size, they'll have plenty of room right in the middle of that vertical space. We'll pin them to the left side of the bars and set them to take up the full width with the text aligned in the center.
+            </p>
+
+            <p style="font-family: monospace;">
+                .timeline li .label { <br>
+                &ensp;display: block; <br>
+                &ensp;position: absolute: <br>
+                &ensp;bottom: -2em; <br>
+                &ensp;line-height: 2em; <br>
+                &ensp;left: 0; <br>
+                &ensp;width: 100; <br>
+                &ensp;text-align: center; <br>
+                }
+            </p>
+
+            <p>
+                Since we're not going to be displaying the counts in this chart, we'll just use the <span style="font-family: monospace;">count</span> element to display the bar, using the same combination of text-indent and overflow to hide the text. <br>
+                We'll give the bars a solid background and position them from the bottom left of the list item. Reversing what we did for the horizontal bar chart, we'll set the width of the bars to 100% and the height to zero.
+            </p>
+
+            <p style="font-family: monospace;">
+                .timeline li a .count { <br> 
+                &ensp;display:block;    <br> 
+                &ensp;position: absolute;   <br> 
+                &ensp;bottom: 0;            <br> 
+                &ensp;left: 0;              <br> 
+                &ensp;text-indent: -9999px; <br> 
+                &ensp;overflow: hidden;     <br> 
+                &ensp;width: 100%;          <br> 
+                &ensp;height: 0;            <br> 
+                &ensp;background: #AAA;     <br> 
+                }
+            </p>
+
+            <p>
+                For this chart, we don't want each bar to represent a percentage of the total for the whole chart, since there are so many items and the bars would all be tiny. Instead, we want the day with the highest value to be the tallest bar, so we'll set the height on that to 100% and calculate the heights of all the percentages of that day's highest count.
+            </p>
+        <!-- END COLUMN ONE -->
+        </div>
+
+        <!-- START COLUMN TWO -->
+        <div class="column">
+            <p>
+                <h3>Average Karachi Temperatures</h3>
+                <ul>
+                    <li>
+                        <a href="http://www.example.com/2020/dec/1" title="December 1, 2020: 33°">
+                        <span class="label">1</span>
+                        <span class="count">(33)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.example.com/2020/dec/2" title="December 2, 2020: 33°">
+                        <span class="label">2</span>
+                        <span class="count">(33)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.example.com/2020/dec/3" title="December 3, 2020: 33°">
+                        <span class="label">3</span>
+                        <span class="count">(33)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.example.com/2020/dec/4" title="December 4, 2020: 32°">
+                        <span class="label">4</span>
+                        <span class="count">(32)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.example.com/2020/dec/5" title="December 5, 2020: 32°">
+                        <span class="label">5</span>
+                        <span class="count">(32)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.example.com/2020/dec/6" title="December 6, 2020: 32°">
+                        <span class="label">6</span>
+                        <span class="count">(32)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.example.com/2020/dec/7" title="December 7, 2020: 33°">
+                        <span class="label">7</span>
+                        <span class="count">(33)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.example.com/2020/dec/8" title="December 8, 2020: 31°">
+                        <span class="label">8</span>
+                        <span class="count">(31)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.example.com/2020/dec/9" title="December 9, 2020: 29°">
+                        <span class="label">9</span>
+                        <span class="count">(29)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.example.com/2020/dec/10" title="December 10, 2020: 28°">
+                        <span class="label">10</span>
+                        <span class="count">(28)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.example.com/2020/dec/11" title="December 11, 2020: 27°">
+                        <span class="label">11</span>
+                        <span class="count">(27)</span>
+                        </a>
+                    </li>
+                </ul>
+            </p>
+
+            <p>
+                <h2 style="padding-left: 20px;">Timeline Chart</h2>
+                <h3 style="padding-left: 20px;">Average Karachi Temperatures</h3>
+                <ul class="timeline">
+                    <li>
+                        <a href="http://www.example.com/2020/dec/1" title="December 1, 2020: 33°">
+                        <span class="label">1</span>
+                        <span class="count" style="height:33%">(33)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.example.com/2020/dec/2" title="December 2, 2020: 32°">
+                        <span class="label">2</span>
+                        <span class="count" style="height:32%">(32)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.example.com/2020/dec/3" title="December 3, 2020: 33°">
+                        <span class="label">3</span>
+                        <span class="count" style="height:32%">(33)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.example.com/2020/dec/4" title="December 4, 2020: 32°">
+                        <span class="label">4</span>
+                        <span class="count" style="height:32%">(32)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.example.com/2020/dec/5" title="December 5, 2020: 32°">
+                        <span class="label">5</span>
+                        <span class="count" style="height:32%">(32)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.example.com/2020/dec/6" title="December 6, 2020: 32°">
+                        <span class="label">6</span>
+                        <span class="count" style="height:32%">(32)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.example.com/2020/dec/7" title="December 7, 2020: 33°">
+                        <span class="label">7</span>
+                        <span class="count" style="height:33%">(33)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.example.com/2020/dec/8" title="December 8, 2020: 31°">
+                        <span class="label">8</span>
+                        <span class="count" style="height:31%">(31)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.example.com/2020/dec/9" title="December 9, 2020: 29°">
+                        <span class="label">9</span>
+                        <span class="count" style="height:29%">(29)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.example.com/2020/dec/10" title="December 10, 2020: 28°">
+                        <span class="label">10</span>
+                        <span class="count" style="height:28%">(28)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.example.com/2020/dec/11" title="December 11, 2020: 27°">
+                        <span class="label">11</span>
+                        <span class="count" style="height:27%">(27)</span>
+                        </a>
+                    </li>
+                </ul>
+            </p>
+
+        <!-- END COLUMN TWO -->   
+        </div>
+    </div>
+    
+</body>
+</html>

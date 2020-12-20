@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiple Area Charts</title>
+    <style>
+        body {
+            font-family: Lato;
+            width: 50%;
+        }
+
+        .area-chart{
+
+            /* Reset */
+            margin: 0;
+            padding: 0;
+            border: 0;
+            
+            display: grid;
+            background-color: #222;
+
+            /* Dimensions */
+            width: 100%;
+            max-width: var(--chart-width, 700px);
+            height: var(--chart-height, 300px);
+        }
+
+        .area-chart tbody {
+            width: 100%;
+            height: var(--chart-height, 300px);
+
+            /* Layout */
+            display: flex;
+            justify-content: stretch;
+            align-items: stretch;
+            flex-direction: row;
+        }
+
+        .area-chart tr {
+
+            /* Even size items */
+            flex-grow: 1;
+            flex-shrink: 1;
+            flex-basis: 0;
+
+            position: relative;
+        }
+
+        .area-chart td {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+
+            clip-path: polygon(
+                0% calc(100% * (1 - var(--start))),
+                100% calc(100% * (1 - var(--end))),
+                100% 100%,
+                0% 100%
+            );
+
+            background: var(--color);
+        }
+
+        .area-chart td:nth-of-type(1) {
+            --color: rgba(240, 50, 50, 0.75);
+        }
+
+        .area-chart td:nth-of-type(2) {
+            --color: rgba(255, 180, 50, 0.75);
+        }
+
+        .area-chart td:nth-of-type(3) {
+            --color: rgba(255, 220, 90, 0.75);
+        }
+
+
+    </style>
+</head>
+<body>
+    <h2>Multiple Area Charts</h2>
+
+    <p>This kind of chart requires several child elements, so 
+        we are going to replace our &lt;ul&gt; approach with a 
+        &lt;table&gt;.
+    </p>
+
+    <h3>Two-Dimensional Table</h3>
+    <table>
+        <tbody>
+            <tr>
+                <td style="--start:0.1; --end:0.5;"> 50 </td>
+                <td style="--start:0.0; --end:0.2;"> 20 </td>
+                <td style="--start:0.2; --end:0.4;"> 40 </td>
+            </tr>
+            <tr>
+                <td style="--start:0.5; --end:0.8;"> 80 </td>
+                <td style="--start:0.2; --end:0.5;"> 50 </td>
+                <td style="--start:0.4; --end:0.1;"> 10 </td>
+            </tr>
+            <tr>
+                <td style="--start:0.8; --end:0.4;"> 40 </td>
+                <td style="--start:0.5; --end:0.3;"> 30 </td>
+                <td style="--start:0.1; --end:0.2;"> 20 </td>
+            </tr> 
+        </tbody>
+    </table>
+    <hr>
+    <p>
+        Tables are accessible and search-engine friendly. 
+        And if the stylesheet doesn't load for some reason, 
+        all the data is still visible in the markup.
+    </p>
+
+    <p>
+        So, first we'll style the general layout for the 
+        wrapping element, our table, which we've given an 
+        .area-chart class
+    </p>
+
+    <p>Next we'll make the &lt;tbody&gt; element a flex container, 
+        displaying the &lt;tr&gt; items in a row and evenly-sized.
+    </p>
+
+    <p>Next, we need to make the &lt;td&gt; elements cover each 
+        other, one element on top of each other so we get that 
+        layered effect. Each &lt;td&gt; covers the entire area 
+        of the &lt;tr&gt; element that contains it.
+    </p>
+
+    <p>Let's put the magical powers of 'clip-path: polygon()' 
+        to use. We're only displaying the area between 
+        --start and --end custom properties, which, again are 
+        values between 0 and 1.
+    </p>
+
+
+    <h3>Multiple Area Chart</h3>
+    <table class="area-chart">
+        <tbody>
+            <tr>
+                <td style="--start:0.1; --end:0.5;"> 50 </td>
+                <td style="--start:0.0; --end:0.2;"> 20 </td>
+                <td style="--start:0.2; --end:0.4;"> 40 </td>
+            </tr>
+            <tr>
+                <td style="--start:0.5; --end:0.8;"> 80 </td>
+                <td style="--start:0.2; --end:0.5;"> 50 </td>
+                <td style="--start:0.4; --end:0.1;"> 10 </td>
+            </tr>
+            <tr>
+                <td style="--start:0.8; --end:0.4;"> 40 </td>
+                <td style="--start:0.5; --end:0.3;"> 30 </td>
+                <td style="--start:0.1; --end:0.2;"> 20 </td>
+            </tr>  
+        </tbody>
+    </table>
+
+</body>
+</html>

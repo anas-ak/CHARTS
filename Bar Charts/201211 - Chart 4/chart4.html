@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--Original Author: https://alistapart.com/article/accessibledatavisualization/-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Bar Chart</title>
+    <style>
+        body { font-family: Lato, Verdana; }
+        
+        .section {
+            float: left;
+            clear: left;
+            padding: 1em 2em;
+        }
+
+        a{
+            color: #2d7bb2;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            color: #222;
+        }
+
+        .chartList {
+            width: 15em;
+            float: left;
+            border-top: 1px solid #eee;
+        }
+
+        .chartList li {
+            border-bottom: 1px solid #eee;
+            display: block;
+            position: relative;
+            _zoom: 1;
+        }
+
+        .chartList .count {
+            display: block;
+            position: absolute;
+            top: 0;
+            right: 0;
+            margin: 0 0.3em;
+            text-align: right;
+            color: rgb(48, 45, 233);
+            font-weight: bold;
+            font-size: 0.875em;
+        }
+
+        .chartList li a {
+            display: block;
+            padding: 0.4em 4.5em 0.4em 0.5em;
+            position: relative;
+            z-index: 2;
+        }
+
+        .chartList .index {
+            overflow: hidden;
+            text-indent: -9999px;
+            top: 0;
+            left: 0;
+            height: 100%;
+            position: absolute;
+            display: block;
+            background-color: #b3dae9;
+            line-height: 2em;
+        }
+
+        .chartList li:hover {
+            background: #Efefef;
+        }
+
+    </style>
+</head>
+<body>
+    <h2>Simple Bar Chart</h2>
+
+    <ul>
+        <li>
+            <a href="http://www.example.com/fruits/apples">Apples</a>
+        </li>
+
+        <li>
+            <a href="http://www.example.com/fruits/bananas">Bananas</a>
+        </li>
+        
+        <li>
+            <a href="http://www.example.com/fruits/cherries">Cherries</a>
+        </li>
+
+        <li>
+            <a href="http://www.example.com/fruits/dates">Dates</a>
+        </li>
+    </ul>
+
+    <p>The first thing to do is to wrap each item in the list. <br>
+    Wrap them in ther own &lt;span&gt; outside the links so we can style them separately.</p>
+
+    <ul>
+        <li>
+            <a href="http://www.example.com/fruits/apples">Apples</a>
+            <span>420</span>
+        </li>
+
+        <li>
+            <a href="http://www.example.com/fruits/bananas">Bananas</a>
+            <span>280</span>
+        </li>
+        
+        <li>
+            <a href="http://www.example.com/fruits/cherries">Cherries</a>
+            <span>200</span>
+        </li>
+
+        <li>
+            <a href="http://www.example.com/fruits/dates">Dates</a>
+            <span>100</span>
+        </li>
+    </ul>
+
+    <p>In order to create the bars, we need to style the list items as <br>
+    block elements so they take up the full width, and set them to use <br>
+    relative positioning so we can position the bars relative to each item.</p>
+
+    <h3>Style</h3>
+
+    <p>Since the main purpose of this list iis navigation, we'll set <br>
+        <span style="font-family: monospace"> display: block </span> on the link elements so the click target fills up <br>
+        the full width of the list as well.
+    </p>
+
+    <p style="font-family: monospace;">
+        .chartList li { <br> 
+        &ensp;position: relative; <br>
+        &ensp;display: block; <br>
+        }
+    </p>
+
+    <p>
+        We'll also add in some styles to offset the counts to the right of <br>
+        the list for easy scanning. We'll use absolute positioning instead <br>
+        of a float so the links and the chart bars can all overlap in the <br>
+        full width of the chart without running into each other.
+    </p>
+
+    <p style="font-family: monospace;">
+        .chartList .count {       <br>
+        &ensp;display: block;     <br>
+        &ensp;position: absolute; <br>
+        &ensp;top: 0;             <br>
+        &ensp;right: 0;           <br>
+        &ensp;margin: 0 0.3em;    <br>
+        &ensp;text-align: right;  <br>
+        &ensp;color: #999;        <br>
+        &ensp;font-weight: bold;  <br>
+        &ensp;font-size: 0.875em; <br>
+        }
+    </p>
+
+    <p>
+        Since we've used absolute positioning for the counts, we'll add some <br> padding to the links to make sure there is room for the numbers <br> to fit next to the link text without overlapping.
+    </p>
+
+    <p>
+        We'll also need to add a couple of styles to the links to make <br>
+        sure they always appear above the bars we're going to position <br> below them. We'll set their <span style="font-family: monospace;">z-index</span> to something above zero so they'll stay at the <br>
+        top of the chart.
+    </p>
+
+    <p style="font-family: monospace;">
+        .chartList li a { <br>
+        &ensp;display: block; <br>
+        &ensp;padding: 0.4em 4.5em 0.4em 0.5em; <br>
+        &ensp;position: relative; <br>
+         &ensp;z-index: 2; <br>
+        }
+    </p>
+
+    <p>
+        Before we style the bars, we need an element provides a markup <br>
+        for each item to store the information that the bars will convey. <br> In this case we want to show the relative value of each item in the <br> list compared to the total count for the whole list.
+    </p>
+
+    <p>
+        So, the information we'll be communicating with the bars will be a <br>
+        percentage calculated from those two values. We'll add an element to <br> the markup and give it an appropriate class so we can pick it <br>
+        up in the styles. We'll use a class of <span style="font-family:monospace">index</span> to represent the ratios <br> represented by the chart bars.
+    </p>
+
+    <ul>
+        <li>
+            <a href="http://www.example.com/fruits/apples">Apples</a>
+            <span>420</span>
+            <span style="width:42%">(42%)</span>
+        </li>
+
+        <li>
+            <a href="http://www.example.com/fruits/bananas">Bananas</a>
+            <span>280</span>
+            <span style="width:28%">(28%)</span>
+        </li>
+        
+        <li>
+            <a href="http://www.example.com/fruits/cherries">Cherries</a>
+            <span>200</span>
+            <span style="width:20%">(20%)</span>
+        </li>
+
+        <li>
+            <a href="http://www.example.com/fruits/dates">Dates</a>
+            <span>100</span>
+            <span style="width:10%">(10%)</span>
+        </li>
+    </ul>
+
+<h3>A Note About The Data</h3>
+<p>
+    In this example chart, we're showing each item as a percentage of the <br>
+    whole (like a pie chart), but you can use the same technique to show <br>
+    percentages relative to the highest value in the list - so there is <br>
+    always at least one 100% bar and everything else is a percentage of that <br> maximum value.
+</p>
+
+<p>
+    You can also calculate the percentages relative to a baseline value that <br> you set at a fixed percentage (say, 50%) and all the other percentages <br> will be higher or lower based on their deviation from <br>
+    the baseline; performance data for new computer chips and similar products <br> is often displayed in this way.
+</p>
+
+<p>
+    The math to accomplish this is outside the scope of this article, but <br>
+    the point is that you can use the same markup and style techniques to <br>
+    chart different types of data. Just be sure to clear titles and descriptions <br> for your charts so the values themselves make sense <br>
+    in context.
+</p>
+
+<p>
+    In these examples, we're using made-up data, but theree are a variety <br>
+    of ways to calculate the percentages on a real site. You can calculate <br>
+    them on the backend and display them in a template. <br><br>
+    You can also use JavaScript to extract the percentage value from the <br>
+    markup and apply it as a width style to the bars. 
+</p>
+
+<p>
+    For the purpose of these examples, we're assuming that all the necessary <br> math is already done, so we'll use hand-coded inline styles to <br>
+    represent the widths of the bars as percentages.
+</p>
+
+<h3>Finishing Up The Bar Chart</h3>
+
+<p>
+    The final step for this chart is to add the styling for the bars. <br>
+    We're going to hide the actual percentage (using the text-indent trick <br>
+    from Mike Rundle's trusty <a href="https://en.wikipedia.org/wiki/CSS_image_replacement#Implementations" target="_blank">image replacement technique</a>) since the precise <br> value isn't as important as the <br>
+    relative scale and the bar wll do nicely on its own. If you need to show <br> the percentage, you can choose to display the percentage within the <br> bar or use separate elements for the bar and the percentage.
+</p>
+
+<p>
+    In our &lt;span&gt; elements, we'll set the height of the bars to 100% <br> and since we'll be setting the actual width later, we'll set a <br> default width of 0, so the bars won't show up at all if we don't 
+    <br> give them an explicit value. <br><br>
+    We've chosen a light blue for the bar backgrounds, so the link text will <br> be readable when it overlaps the bar, but the bars will still <br>
+    be easily visible.
+</p>
+
+<p style="font-family: monospace;">
+    .chartList .index { <br>
+    &ensp;display: block; <br>
+    &ensp;position: absolute; <br>
+    &ensp;top: 0; <br>
+    &ensp;left: 0; <br>
+    &ensp;height: 100%; <br>
+    &ensp;background: #B8E4F5; <br>
+    &ensp;text-indent: -9999px; <br>
+    &ensp;overflow: hidden;
+    }
+</p>
+
+<h3>Popular fruits by quantity</h3>
+<div class="section">
+<ul class="chartList">
+    <li>
+        <a href="http://www.example.com/fruits/apples">Apples</a>
+        <span class="count">420</span>
+        <span class="index" style="width:42%">(42%)</span>
+    </li>
+
+    <li>
+        <a href="http://www.example.com/fruits/bananas">Bananas</a>
+        <span class="count">280</span>
+        <span class="index" style="width:28%">(28%)</span>
+    </li>
+    
+    <li>
+        <a href="http://www.example.com/fruits/cherries">Cherries</a>
+        <span class="count">200</span>
+        <span class="index" style="width:20%">(20%)</span>
+    </li>
+
+    <li>
+        <a href="http://www.example.com/fruits/dates">Dates</a>
+        <span class="count">100</span>
+        <span class="index" style="width:10%">(10%)</span>
+    </li>
+</ul>
+</div>
+</body>
+</html>

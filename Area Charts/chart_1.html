@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Area Chart</title>
+    <style>
+        body {
+            font-family: Lato;
+            width: 50%;
+        }
+
+        .area-chart {
+            /* Reset */
+            margin: 0;
+            padding: 0;
+            border: 0;
+            display: grid;
+            place-items: center;
+            background-color: #222;
+
+            /* Dimensions */
+            width: 100%;
+            max-width: var(--chart-width, 100%);
+            height: var(--chart-height, 300px);
+
+            /* Layout */
+            display: flex;
+            justify-content: stretch;
+            align-items: stretch;
+            flex-direction: row;
+        }
+
+        ul.area-chart, 
+        ol.area-chart {
+            list-style: none;
+        }
+
+        .area-chart > * {
+            /* Even size items */
+            flex-grow: 1;
+            flex-shrink: 1;
+            flex-basis: 0;
+
+            /* Color */
+            background: var(--color, rgba(240, 50, 50, 0.75));
+
+            clip-path: polygon(
+                0% calc(100% * (1 - var(--start))),      /* Top Left */
+                100% calc(100% * (1 - var(--end))),    /* Top Right */
+                100% 100%,  /* Bottom Right */
+                0% 100%     /* Bottom Left */
+            );
+        }
+
+    </style>
+</head>
+<body>
+    <h2>Area Chart</h2>
+    
+    <p>
+        CSS can't retrieve the inner HTML text, that's why we 
+        will be using CSS custom properties to pass data to 
+        our CSS. Each data item will have a '--start' and 
+        '--end' custom properties.
+    </p>
+
+    <h3>Basic Unordered List</h3>
+    <ul>
+        <li style="--start: 0.1; --end: 0.4;">40%</li>
+        <li style="--start: 0.4; --end: 0.8;">80%</li>
+        <li style="--start: 0.8; --end: 0.6;">60%</li>
+        <li style="--start: 0.6; --end: 1.0;">100%</li>
+        <li style="--start: 1.0; --end: 0.3;"">30%</li>
+    </ul>
+
+    <p>Here's what we need to consider before moving into styling</p>
+    <ul>
+        <li>
+            <strong>Units data:</strong> We will be using unit-less 
+            data in our HTML(no px, em, rem, %). 
+            <br>The --start and the --end custom properties 
+            will be numbers between 0 and 1.
+        </li>
+        <br>
+
+        <li>
+            <strong>Columns width:</strong> We won't set a fixed 
+            width for each &lt;li&gt; element. Each column width 
+            will be based on the main wrapper width, divided by 
+            the total number of data items. 
+            <br>In our case, that the width of the &lt;ul&gt; 
+            element divided by the number of &lt;li&gt; elements.
+        </li>
+        <br>
+
+        <li>
+            <strong>Accessibility:</strong> The values inside 
+            each &lt;li&gt; is optional and only the --start 
+            and --end custom properties are required. Still, 
+            it's best to include some sort of text or value for 
+            screen readers and other assistive technologies to 
+            describe the content.
+        </li>
+    </ul>
+
+    <p>To create a rectangle covering the entire area, we will 
+        reach for the 'clip-path' property and use its 
+        polygon() function containing the coordinates of the 
+        area. This basically doesn't do anything at the moment
+        because the polygon covers everything. 
+        <br>
+        <br>
+
+        clip-path: polygon(<br>
+        &emsp; 0% 0%,      /* Top Left */       <br>
+        &emsp;100% 0%,    /* Top Right */       <br>
+        &emsp;100% 100%,  /* Bottom Right */    <br>
+        &emsp;0% 100%     /* Bottom Left */     <br>
+            );
+
+    </p>
+
+    <p>And finally, to show just part of the column, we clip 
+        it to create that area chart-like effect. To show just 
+        the area we want, we use the --start and --end custom 
+        properties inside the clip-path polygon:
+        <br>
+        <br>
+
+        clip-path: polygon(<br>
+        &emsp;0% calc(100% * (1 - var(--start))),      <br>
+        &emsp;100% calc(100% * (1 - var(--end))),      <br>
+        &emsp;100% 100%,  /* Bottom Right */           <br>
+        &emsp;0% 100%     /* Bottom Left */            <br>
+            );
+    </p>
+
+    <h3>Area Chart</h3>
+    <ul class="area-chart">
+        <li style="--start: 0.1; --end: 0.4;">40%</li>
+        <li style="--start: 0.4; --end: 0.8;">80%</li>
+        <li style="--start: 0.8; --end: 0.6;">60%</li>
+        <li style="--start: 0.6; --end: 1.0;">100%</li>
+        <li style="--start: 1.0; --end: 0.3;">30%</li>
+    </ul>
+</body>
+</html>
