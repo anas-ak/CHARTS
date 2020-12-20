@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.anychart.com/releases/8.9.0/js/anychart-core.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.9.0/js/anychart-bundle.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.9.0/js/anychart-base.min.js"></script>
+    <title>AnyChart Template</title>
+
+    <style>
+        h5{ 
+            font-family: lato;
+        }
+        p{ 
+            font-size: 12px;
+            font-family: lato; 
+        }
+
+        .row {
+            display: flex;
+        }
+
+        .column {
+            /*flex: 50%;*/
+            float: left;
+            width: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div style="width:400px;">
+        <h5>AnyChart Rules:</h5>
+
+        <p>
+            The main module, required by all chart types, is Core, the core of the engine. <br> 
+            It is included, among other things, in the Base and Bundle modules, so you can also use them instead.
+        </p>
+    </div>
+
+    <h4 style="font-family:Lato">TYPES OF CHARTS</h4>
+    <div class="row">
+        <div class="column">
+            <h5>Bullet Charts</h5>
+            <p>
+                A Bullet Chart is a variation of Bar Chart designed to compare a single, primary measure (for example, current year-to-date revenue) to one or more other measures to enrich its meaning (for example, compared to a target), and displays it in the context of qualitative ranges of performance, such as poor, satisfactory, and good. The qualitative ranges are displayed as blocks of one hue but with varying intensity, making them discernible by those who are color blind and to restrict the use of colors on the dashboard to a minimum.
+                <br><br>
+                Requires &lt;script src="https://cdn.anychart.com/releases/8.9.0/js/anychart-bullet.min.js"&gt;&lt;/script&gt;
+
+            </p>
+        </div>
+        <div class = column">
+            <img src="Images/anychart_bullet.jpg" alt="bullet-chart">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="column">
+            <h5>Basic Cartesian Charts</h5>
+            <p>
+                A module for creating basic Cartesian charts: Area, Bar, Box, Bubble, Column, Area, HiLo, Candlestick, Jump Line, Line, Marker, OHLC, Range Area, Range Bar, Range Column, Range Spline Area, Range Step Area, Spline Area, Spline, Step Area, Step Line, Stick.
+                <br><br>
+                Requires &lt;script src="https://cdn.anychart.com/releases/8.9.0/js/anychart-cartesian.min.js"&gt;&lt;/script&gt;
+
+            </p>
+        </div>
+        <div class = column">
+            <img src="Images/anychart_basic_cartesian.jpg" alt="basic-cartesian-chart">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="column">
+            <h5>Basic 3D Charts</h5>
+            <p>
+                A module for creating Cartesian 3D charts (except for Pie and Doughnut):
+                <br><br>
+                Requires &lt;script src="https://cdn.anychart.com/releases/8.9.0/js/anychart-cartesian-3d.min.js"&gt;&lt;/script&gt;
+
+            </p>
+        </div>
+        <div class = column">
+            <img src="Images/anychart_basic_cartesian_3d.jpg" alt="basic-cartesian-3d-chart">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="column">
+            <h5>Circular Gauge Charts</h5>
+            <p>
+                A module for creating Circular Gauges. <br>
+                A Circular Gauge is a visual representation of a measuring device with a radial axis that sweeps any angle from 0 to 360 degrees and a pointer (Needle or Knob) that indicates values on that scale. Gauge axes are usually colored for easy value distinction. Gauges can be used as clocks, speedometer, compass, volume tuner or any other gauge that should represent the value as an angle on a circle plot.
+                <br><br>
+                Requires &lt;script src="https://cdn.anychart.com/releases/8.9.0/js/anychart-circular-gauge.min.js"&gt;&lt;/script&gt;
+
+            </p>
+        </div>
+        <div class = column">
+            <img src="Images/anychart_circular_gauge.jpg" alt="circular-gauge-chart">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="column">
+            <h5>Gantt Charts</h5>
+            <p>
+                A module for creating Project and Resource Gantt charts <br>
+                A Gantt chart is a tool used to schedule projects or show resources (e.g., equipment or employees) over periods of time. Project tasks or periods are visualized as horizontal bars, their width representing the duration.
+                <br><br>
+                Requires &lt;script src="https://cdn.anychart.com/releases/8.9.0/js/anychart-gantt.min.js"&gt;&lt;/script&gt;
+
+            </p>
+        </div>
+        <div class = column">
+            <img src="Images/project_timeline.jpg" alt="gantt-chart">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="column">
+            <h5>Geo Map Charts</h5>
+            <p>
+                A module for creating Geo Maps <br>
+                An interactive map. AnyMap requires adding the Core and Geo Maps modules. <br> 
+                Reference the map JavaScript file in the &lt;head&gt; section of your web page
+                Requires &lt;script src="https://cdn.anychart.com/releases/8.9.0/js/anychart-map.min.js"&gt;&lt;/script&gt;
+            </p>
+                <br>
+            <h5>Include the Geodata</h5> 
+            <p> Reference the GeoData JavaScript file in the &lt;head&gt; section of your web page. <br> 
+
+                    &lt;script src="https://cdn.anychart.com/geodata/2.1.0/countries/australia/australia.js"&gt;&lt;/script&gt;
+                    <br>
+                    You also can use GeoJSON, TopoJSON or SVG formats.
+            </p>
+        </div>
+        <div class = column">
+            <img src="Images/anychart-geomap.jpg" alt="geo-map">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="column">
+            <h5>Heat Maps</h5>
+            <p>
+                A module for creating Heat Maps. <br>
+                A  heat map is a visualization of a data matrix where values are represented as colors.
+                <br><br>
+                Requires &lt;script src="https://cdn.anychart.com/releases/8.9.0/js/anychart-heatmap.min.js"&gt;&lt;/script&gt;
+
+            </p>
+        </div>
+        <div class = column">
+            <img src="Images/anychart_heatmap.jpg" alt="heat-map">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="column">
+            <h5>Linear Gauge</h5>
+            <p>
+                A module for creating Linear Gauges. <br>
+                A linear gauge is visual representation of a measuring device with a horizontal or vertical scale and a pointer or multiple pointers indicating particular values. The scale is usually color zoned, which helps to see what range the value of interest falls in. Linear gauges can represent thermometers, radio scales, battery indicators, rulers, and any other devices with straight line-shaped scales.
+                <br><br>
+                Requires &lt;script src="https://cdn.anychart.com/releases/8.9.0/js/anychart-linear-gauge.min.js"&gt;&lt;/script&gt;
+
+            </p>
+        </div>
+        <div class = column">
+            <img src="Images/linear_gauge.jpg" alt="linear-gauge">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="column">
+            <h5>Marimekko Charts</h5>
+            <p>
+                A module for creating Marimekko Charts. <br>
+                A  Mosaic plot in which all the bars are of equal height, there are no spaces between the bars, and the bars are in turn each divided into segments of different width. The design of the mosaic plot resembles a Marimekko print. The chart's design encodes two variables (such as the percentage of sales and market share).
+                <br><br>
+                Requires &lt;script src="https://cdn.anychart.com/releases/8.9.0/js/anychart-mekko.min.js"&gt;&lt;/script&gt;
+
+            </p>
+        </div>
+        <div class = column">
+            <img src="Images/mekko-chart.jpg" alt="mekko-chart">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="column">
+            <h5>Network Graphs</h5>
+            <p>
+                A module for creating Network Graphs. <br>
+                A network graph is a mathematical visualization that is used to model pairwise relations between points. Points are represented as nodes (vertices) that are linked by lines (edges).
+                <br><br>
+                Requires &lt;script src="https://cdn.anychart.com/releases/8.9.0/js/anychart-graph.min.js"&gt;&lt;/script&gt;
+
+            </p>
+        </div>
+        <div class = column">
+            <img src="Images/network-graph.jpg" alt="network-graph">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="column">
+            <h5>Pareto Chart</h5>
+            <p>
+                A module for creating Pareto Charts. <br>
+                A Pareto chart, named after Vilfredo Pareto, is a type of chart that contains both bars and a line graph, where individual values are represented in descending order by bars, and the cumulative total is represented by the line.
+
+                The left vertical axis is the frequency of occurrence, but it can alternatively represent cost or another important unit of measure. The right vertical axis is the cumulative percentage of the total number of occurrences, total cost, or total of the particular unit of measure. Because the reasons are in decreasing order, the cumulative function is a concave function.
+
+                The purpose of the Pareto chart is to highlight the most important among a (typically large) set of factors. In quality control, it often represents the most common sources of defects, the highest occurring type of defect, or the most frequent reasons for customer complaints, and so on.
+                <br><br>
+                Requires &lt;script src="https://cdn.anychart.com/releases/8.9.0/js/anychart-pareto.min.js"&gt;&lt;/script&gt;
+
+            </p>
+        </div>
+        <div class = column">
+            <img src="Images/pareto_chart.jpg" alt="pareto-charts">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="column">
+            <h5>PERT Chart</h5>
+            <p>
+                A module for creating PERT Charts. <br>
+                PERT is an abbreviation for "Program (Project) Evaluation and Review Technique". This technique, developed by the U.S. Navy in the 1950s, is used in project management to analyze and represent the tasks involved in completing a given project. It is applied mostly in large-scale projects where time is the major factor and allows to schedule a project without knowing precisely the details and durations of all activities. For example, PERT was used in planning the 1968 Winter Olympics in Grenoble.
+                <br><br>
+                Despite PERT technology might seem too complicated, it can still be profitably applied and used in some circumstances. For example, planning a building project can be successfully based on the PERT method. Similarly, the organization of any examinations or competitions, especially on a national scale, due to being complicated and expensive, is worth being based on PERT. Any reforms, innovations or other activities which demand a great time and resource planning are good cases for using PERT.
+                <br><br>
+                Requires &lt;script src="https://cdn.anychart.com/releases/8.9.0/js/anychart-pert.min.js"&gt;&lt;/script&gt;
+
+            </p>
+        </div>
+        <div class = column">
+            <img src="Images/anychart_pert_chart.jpg" alt="pert-chart">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="column">
+            <h5>Pie Charts</h5>
+            <p>
+                A module for creating Pie Charts. <br>
+                A pie chart is a circular chart looking like a pie divided into slices (sectors). Slices show the percentage each value contributes to a total, the area of each slice being proportional to the quantity it represents, and the circle representing 100%.
+                Pie charts are used very widely with small sets of data to compare categories. They cannot be multiple-series and should not be used when there are more than just a few categories.
+                <br><br>
+                Requires &lt;script src="https://cdn.anychart.com/releases/8.9.0/js/anychart-pie.min.js"&gt;&lt;/script&gt;
+                <br><br>
+                Alternatively, you can use the Base module, which includes, among other things, the two modules mentioned above: <br>
+                &lt;script src="https://cdn.anychart.com/releases/8.9.0/js/anychart-base.min.js"&gt;&lt;/script&gt;
+            </p>
+        </div>
+        <div class = column">
+            <img src="Images/pie-chart.jpg" alt="pie-chart">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="column">
+            <h5>Doughnut Charts</h5>
+            <p>
+                A module for creating Doughnut Charts. <br>
+                A doughnut (or donut) chart is a pie chart with a "hole" - a blank circular area in the center. The chart is divided into parts that show the percentage each value contributes to a total.
+
+                Like the regular pie chart, the doughnut chart is used with small sets of data to compare categories. It drives attention from the area taken by each part to emphasize the length of arcs. The blank space also allows displaying some additional information in the center: for example, labels, the name of a selected category, or the chart title.
+                <br><br>
+                Requires &lt;script src="https://cdn.anychart.com/releases/8.9.0/js/anychart-pie.min.js"&gt;&lt;/script&gt;
+                <br><br>
+                Alternatively, you can use the Base module, which includes, among other things, the two modules mentioned above: <br>
+                &lt;script src="https://cdn.anychart.com/releases/8.9.0/js/anychart-base.min.js"&gt;&lt;/script&gt;
+            </p>
+        </div>
+        <div class = column">
+            <img src="Images/doughnut_chart.jpg" alt="doughnut-chart">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="column">
+            <h5>Polar Charts</h5>
+            <p>
+                A module for creating Polar Charts. <br>
+                A polar chart is a scatter chart drawn in the polar coordinate system - a two-dimensional coordinate system where each point is determined by a distance from a fixed point and an angle from a fixed direction.
+                <br><br>
+                Requires &lt;script src="https://cdn.anychart.com/releases/8.9.0/js/anychart-polar.min.js"&gt;&lt;/script&gt;
+            </p>
+        </div>
+        <div class = column">
+            <img src="Images/polar-chart.jpg" alt="polar-chart">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="column">
+            <h5>Funnel Charts</h5>
+            <p>
+                A module for creating Funnel Charts. <br>
+                Funnel Charts are so-called Accumulation Charts and they show percentage ratio. Funnel Charts are often used to represent stages in a sales process and show the amount of potential revenue for each stage. This type of chart can also be useful in identifying potential problem areas in an organization's sales processes.
+                <br><br>
+                Requires &lt;script src="https://cdn.anychart.com/releases/8.9.0/js/anychart-pyramid-funnel.min.js"&gt;&lt;/script&gt;
+            </p>
+        </div>
+        <div class = column">
+            <img src="Images/funnel-chart.jpg" alt="pyramid-chart">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="column">
+            <h5>Pyramid Charts</h5>
+            <p>
+                A module for creating Pyramid Charts. <br>
+                Pyramid chart is a kind of Funnel chart that presents data in the similar way the funnel does. The main different of the pyramid chart from the funnel is an absence of the neck part.
+                <br><br>
+                Requires &lt;script src="https://cdn.anychart.com/releases/8.9.0/js/anychart-pyramid-funnel.min.js"&gt;&lt;/script&gt;
+            </p>
+        </div>
+        <div class = column">
+            <img src="Images/pyramid-chart.jpg" alt="pyramid-chart">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="column">
+            <h5>Radar Charts</h5>
+            <p>
+                A module for creating Radar Charts. <br>
+                A radar chart is a graphical method of displaying multivariate data in the form of a two-dimensional chart of three or more quantitative variables represented on axes starting from the same point. The relative position and angle of the axes is typically uninformative. The radar chart is otherwise known as a web chart, spider chart, star chart, cobweb chart, star plot, irregular polygon, or kiviat diagram.
+                <br><br>
+                Requires &lt;script src="https://cdn.anychart.com/releases/8.9.0/js/anychart-radar.min.js"&gt;&lt;/script&gt;
+            </p>
+        </div>
+        <div class = column">
+            <img src="Images/radar-plot.jpg" alt="radar-plot">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="column">
+            <h5>Sankey Diagram</h5>
+            <p>
+                A module for creating Sankey Diagrams. <br>
+                A Sankey diagram, or chart, named after Captain Matthew Sankey, is a flow diagram that shows nodes linked by flows, the quantity of each flow being represented as its width. This chart type emphasizes the major transfers or flows within a system and helps to locate dominant contributions to an overall flow.
+                <br><br>
+                Requires &lt;script src="https://cdn.anychart.com/releases/8.9.0/js/anychart-sankey.min.js"&gt;&lt;/script&gt;
+            </p>
+        </div>
+        <div class = column">
+            <img src="Images/sankey-diagram.jpg" alt="sankey-diagram">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="column">
+            <h5>Scatter Plot</h5>
+            <p>
+                A module for creating Scatter Plots. <br>
+                AnyChart allows you to create scatter charts by using a special scatter chart constructor. It processes data points as-is: sets of arguments from different series don't influence each other, points are shown in the exact order they are set, and lines can be vertical and cross themselves. While the Cartesian constructor distributes points along the X-axis at equal intervals (categories), the scatter constructor distributes points according to their values. Scatter charts are used mainly to visualize the results of mathematical calculations or physics experiments.
+                <br><br>
+                Requires &lt;script src="https://cdn.anychart.com/releases/8.9.0/js/anychart-scatter.min.js"&gt;&lt;/script&gt;
+            </p>
+        </div>
+        <div class = column">
+            <img src="Images/scatter-plot.jpg" alt="scatter-plot">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="column">
+            <h5>Sparkline Charts</h5>
+            <p>
+                A module for creating Sparkline charts. <br>
+                In some cases it might be necessary to represent a lot of similar data over a long period of time, such as currency trends. Up and down arrows are used for this purpose quite often, but they cannot give the whole picture of the trends. That's where sparklines come to the fore.
+
+                Sparkline charts are rather small with neither axes nor grids, amount of additional information is minimized, but they tell a richer story than trend arrows: we can make a chart display not just the current situation, but its changing over time. Sometimes sparklines can be even more informative than any of usual chart types - just because of its simplicity.
+                <br><br>
+                Requires &lt;script src="https://cdn.anychart.com/releases/8.9.0/js/anychart-sparkline.min.js"&gt;&lt;/script&gt;
+            </p>
+        </div>
+        <div class = column">
+            <img src="Images/sparkline.png" alt="sparkline-chart">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="column">
+            <h5>Stock Charts</h5>
+            <p>
+                A module for creating Stock charts. <br>
+                Stock Chart is a special type of charts that can effectively visualize great amount of date time based data. It has lots of special features such as zoom with Scroller UI, synchronized plots, data grouping and so on. Moreover, Stock Charts are very useful for real-time data visualization. Use them when you have a large amount of date time based data; so it's quite logical to use them, for example, not only for showing the company assets and earnings, but also such things as changes of gage height and water discharge in a Water Supply District for the last decade. That's what makes AnyStock are this popular: it can show large amounts of data and keep it clear to the audience.
+                <br><br>
+                Requires &lt;script src="https://cdn.anychart.com/releases/8.9.0/js/anychart-stock.min.js"&gt;&lt;/script&gt;
+            </p>
+        </div>
+        <div class = column">
+            <img src="Images/stock-chart.jpg" alt="stock-chart">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="column">
+            <h5>Word Trees</h5>
+            <p>
+                A module for creating Word Trees. <br>
+                A word tree is a visualization that displays text data in a hierarchical way: as a tree of elements, usually single words, connected by lines. The font size of words represents their weight - the frequency / number of children. This type can be used to show typical contexts a root word appears in or a hierarchy of terms.
+                <br><br>
+                Requires &lt;script src="https://cdn.anychart.com/releases/8.9.0/js/anychart-bundle.min.js"&gt;&lt;/script&gt;
+            </p>
+        </div>
+        <div class = column">
+            <img src="Images/word-tree.jpg" alt="word-tree">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="column">
+            <h5>Sunburst Chart</h5>
+            <p>
+                A module for creating Sunburst Charts. <br>
+                A sunburst chart, otherwise known as a radial treemap or multi-level pie chart, is a visualization that displays hierarchically organized data as a set of nested rings (the top level of the hierarchy is shown in the center). Rings are divided into slices that represent data points, the sizes of slices sometimes representing their values.
+                <br><br>
+                Requires &lt;script src="https://cdn.anychart.com/releases/8.9.0/js/anychart-sunburst.min.js"&gt;&lt;/script&gt;
+            </p>
+        </div>
+        <div class = column">
+            <img src="Images/sunburst.jpg" alt="sunburst">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="column">
+            <h5>Surface Chart</h5>
+            <p>
+                A module for creating Surface Charts. <br>
+                A Surface chart (or 3D Surface plot) is a chart type used for finding the optimum combinations between two sets of data. As in a topographic map, the colors and patterns indicate the areas that are in the same range of values.
+                <br><br>
+                Requires &lt;script src="https://cdn.anychart.com/releases/8.9.0/js/anychart-surface.min.js"&gt;&lt;/script&gt;
+            </p>
+        </div>
+        <div class = column">
+            <img src="Images/surface-chart.jpg" alt="surface-chart">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="column">
+            <h5>Tag Cloud</h5>
+            <p>
+                A module for creating Tag Clouds. <br>
+                A tag cloud, otherwise known as a word cloud or weighted list, is a visual representation of text data. This chart is typically used to show keyword metadata (tags) on websites, or to visualize free form text. Tags are usually single words, and the importance of each tag, which is often based on its frequency, is shown with font size or color.
+                <br><br>
+                Requires &lt;script src="https://cdn.anychart.com/releases/8.9.0/js/anychart-tag-cloud.min.js"&gt;&lt;/script&gt;
+            </p>
+        </div>
+        <div class = column">
+            <img src="Images/tag-cloud.jpg" alt="tag-cloud">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="column">
+            <h5>Timeline Chart</h5>
+            <p>
+                A module for creating Timeline Charts. <br>
+                A timeline chart is a visualization of events in the chronological order. It displays both events occupying periods of time (ranges) and events with zero duration (moments). Events and dates are shown on a long horizontal bar (axis).
+                <br><br>
+                Requires &lt;script src="https://cdn.anychart.com/releases/8.9.0/js/anychart-timeline.min.js"&gt;&lt;/script&gt;
+            </p>
+        </div>
+        <div class = column">
+            <img src="Images/timeline-chart.jpg" alt="timeline-chart">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="column">
+            <h5>Treemap Chart</h5>
+            <p>
+                A module for creating Treemap Charts. <br>
+                A treemap is a visualization that displays hierarchically organized data as a set of nested rectangles, parent elements being tiled with their child elements. The sizes and colors of rectangles are proportional to the values of the data points they represent.
+                <br><br>
+                Requires &lt;script src="https://cdn.anychart.com/releases/8.9.0/js/anychart-treemap.min.js"&gt;&lt;/script&gt;
+            </p>
+        </div>
+        <div class = column">
+            <img src="Images/treemap.jpg" alt="treemap-chart">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="column">
+            <h5>Venn Diagrams</h5>
+            <p>
+                A module for creating Venn Diagrams. <br>
+                A Venn diagram, named after John Venn, is a diagram representing all possible logical relations between a finite collection of different sets. Sets are shown as regions inside circles or other closed curves, and common elements of the sets are shown as intersections of these circles.
+
+                The AnyChart Venn chart type can be also used for creating Euler diagrams. The Euler diagram, named after Leonhard Euler, is very similar to the Venn diagram, but represents only relevant relations between sets. 
+                <br><br>
+                Requires &lt;script src="https://cdn.anychart.com/releases/8.9.0/js/anychart-venn.min.js"&gt;&lt;/script&gt;
+            </p>
+        </div>
+        <div class = column">
+            <img src="Images/venn-diagram.jpg" alt="venn-diagram">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="column">
+            <h5>Waterfall Chart</h5>
+            <p>
+                A module for creating Waterfall Charts. <br>
+                A waterfall chart is a data visualization that shows how an initial value is affected by a series of intermediate positive or negative values. This type is otherwise known as a cascade chart, bridge chart, flying bricks chart, or Mario chart.
+
+                As a rule, intermediate values are visualized as floating columns, while the initial and the final values look like whole columns. The elements are usually connected with lines.
+                <br><br>
+                Requires &lt;script src="https://cdn.anychart.com/releases/8.9.0/js/anychart-waterfall.min.js"&gt;&lt;/script&gt;
+            </p>
+        </div>
+        <div class = column">
+            <img src="Images/waterfall-chart.jpg" alt="waterfall-chart">
+        </div>
+    </div>
+    
+</body>
+</html>
