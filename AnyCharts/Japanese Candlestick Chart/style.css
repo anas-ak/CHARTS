@@ -1,0 +1,29 @@
+
+        * { font-family: Lato;}
+        html, body, #container, #container_b {
+            width: 100%;
+            height: 550px;
+            margin: 0;
+            padding: 0;
+        }
+
+        #container_c {
+            width: 100%;
+            height: 600px;
+            margin: 0;
+            padding: 0;
+        }
+        .row {
+            display: flex;
+        }
+        .column {
+            flex: 50%;
+        }
+        
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        #pattern {
+            width: 150px;
+        }
