@@ -1,0 +1,17 @@
+        
+        * { font-family: Lato;}
+        html, body, 
+        #container, #container_b, 
+        #container_c, #container_d, 
+        #container_e {
+            width: 100%;
+            height: 550px;
+            margin: 0;
+            padding: 0;
+        }
+        .row {
+            display: flex;
+        }
+        .column {
+            flex: 50%;
+        }

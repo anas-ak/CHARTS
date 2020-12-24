@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>General Settings</title>
+    <script src="https://cdn.anychart.com/releases/8.9.0/js/anychart-core.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.9.0/js/anychart-base.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.9.0/css/anychart-ui.min.css?">
+    <link rel="stylesheet" href="gen-style.css">
+    <style>
+
+    </style>
+</head>
+<body>
+
+  <div class="row">
+      <div class="column">
+        <div id="container"></div>
+      </div>
+
+      <div class="column">
+            <h3 style="text-align: center;">General Settings</h3>
+
+            <p>
+               In AnyChart, you always work with a series, no matter what chart type you create. It is the series type that determines what (and how) is drawn on a chart. Please note that it can be changed on-the-fly
+            </p>
+            <p>
+                Some series types can be shown on a chart simultaneously, and some cannot. There are chart types that can be only single-series and chart types that can be multiple-series. Some series can have both horizontal and vertical orientation. Some can be drawn in 3D. However, despite all the differences, many settings are configured in the same way for all series types, and this article is a brief overview of such settings.
+            </p>
+            <h4>APPEARANCE SETTINGS</h4>
+            <p>
+                AnyChart allows you to specify some visual settings of your chart: for example, the stroke and fill color, hatch fill pattern, and so on. All these settings can be configured in three states: normal, hover, and selected. Also, please note that the set of available options depends on the chart type.
+            </p>
+
+            <p>In the sample on the left, there is an Area and two Line series with appearance settings (fill, hatch fill, stroke) configured in all states</p>
+        </div>
+  </div>
+
+  <div class="row">
+    <div class="column">
+      <div id="container_b"></div>
+    </div>
+
+    <div class="column">
+          <h4>MARKERS</h4>
+          <p>
+            Markers are special symbols that mark certain points on a series. As a rule, they are used to mark certain values on a series or to make series on a multiple-series chart more distinguishable.
+            <br> <br>
+            All chart types allow configuring markers: both on a whole series and in individual points. Available settings include type, size, fill color, and others.
+            <br> <br>
+            In the following sample, there are two Line series. You can see how markers look by default (they are visible only when they are hovered over or selected).
+          </p>
+      </div>
+</div>
+
+<div class="row">
+    <div class="column">
+      <div id="container_c"></div>
+    </div>
+
+    <div class="column">
+          <h4>LABELS</h4>
+          <p>
+            Labels are text or image elements that can be placed anywhere on any chart (you can enable them on a whole series or in individual points). For text labels, font settings and text formatters are available.
+          </p>
+      </div>
+</div>
+
+<div class="row">
+    <div class="column">
+      <div id="container_d"></div>
+    </div>
+
+    <div class="column">
+          <h4>TOOLTIPS</h4>
+          <p>
+            A tooltip is a text box displayed when a point on a chart is hovered over (in all charts tooltips are enabled by default, but it is possible to turn them off). There is a number of visual and other settings available: for example, you can edit the text by using font settings and text formatters, change the style of background, adjust the position of a tooltip, and so on. Also note that tooltips can be configured either on the whole chart or on each series of a multiple-series chart individually.
+          </p>
+          <p>
+            In this sample, there is a Column chart with two series, and tooltips are configured on the whole chart, so they look the same on both series:
+          </p>
+      </div>
+</div>
+
+<div class="row">
+  <div class="column">
+    <div id="container_e"></div>
+  </div>
+
+  <div class="column">
+        <h4>LEGEND</h4>
+        <p>
+          A legend is a part of the chart that lists and explains its elements, making it easier to read and understand. The legend and its items are fully customizable: you can either modify any setting of the default legend or create a custom legend from scratch. <br> <br>
+
+          Most chart types require you to enable the legend manually. But there are some exceptions - for example, the following types: Pie, Doughnut, Funnel, Pyramid, Venn, Waterfall. <br> <br>
+
+          The source of legend items and their default behavior also depend on the chart type. As a rule, when you click on a legend item of a multiple-series chart, the series of the chart it represents is shown / hidden, and when you hover over an item, the hover state of the series is enabled. As for single-series chart types, their legend items represent points, and the behavior of the legend varies with the type.
+        </p>
+        <p>
+          In this sample, there is a Column chart with two series, and tooltips are configured on the whole chart, so they look the same on both series:
+        </p>
+    </div>
+</div>
+
+<div class="row">
+  <div class="column">
+    <div id="container_e"></div>
+  </div>
+
+  <div class="column">
+        <h4>AXES AND SCALES</h4>
+        <p>
+            In AnyChart axes are used to control grids, axes labels, lines, and tick marks. They depend on scales. There are a lot of settings that can be applied to axes and scales: for example, you can change the orientation of axes or invert them, set the minimum and maximum values of a scale and configure its ticks, and so on. All chart types allow you to add extra scales and axes and bind different series to different scales.
+        </p>
+        <p>
+          In this sample, there is a multiple-series chart with a Column series bound to the default Y-axis, and a Line series bound to an additional Y-axis:
+        </p>
+    </div>
+</div>
+
+  <script src="gen-setting.js">
+    
+  </script>
+</body>
+</html>
